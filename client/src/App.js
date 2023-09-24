@@ -13,15 +13,21 @@ function App() {
       <Topbar />
       <BrowserRouter>
         <Routes>
-          <Route exact path="/" element={<Home />} />
-          <Route path="/register" element={user ? <Home /> : <Register />} />
-          <Route path="/login" element={user ? <Home /> : <Login />} />
-          <Route path="/write" element={user ? <Write /> : <Register />} />
+          <Route exact path="/Blog-App" element={<Home />} />
           <Route
-            path="/settings"
+            path="/Blog-App/register"
+            element={user ? <Home /> : <Register />}
+          />
+          <Route path="/Blog-App/login" element={user ? <Home /> : <Login />} />
+          <Route
+            path="/Blog-App/write"
+            element={user ? <Write /> : <Register />}
+          />
+          <Route
+            path="/Blog-App/settings"
             element={user ? <Settings /> : <Register />}
           />
-          <Route path="/post/:postId" element={<Single />} />
+          <Route path="/Blog-App/post/:postId" element={<Single />} />
         </Routes>
       </BrowserRouter>
     </>

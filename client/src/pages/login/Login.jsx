@@ -22,7 +22,7 @@ const Login = () => {
         </button>
       </form>
       <button className="loginRegisterButton">
-        <a href="/register">Register</a>
+        <a href="/Blog-App/register">Register</a>
       </button>
     </div>
   );

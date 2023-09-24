@@ -28,7 +28,7 @@ const Register = () => {
         </button>
       </form>
       <button className="registerLoginButton">
-        <a href="/login">Login</a>
+        <a href="/Blog-App/login">Login</a>
       </button>
     </div>
   );

@@ -13,19 +13,19 @@ const topbar = () => {
       <div className="topCenter">
         <ul className="topList">
           <li className="topListItem">
-            <a href="/">HOME</a>
+            <a href="/Blog-App/">HOME</a>
           </li>
           <li className="topListItem">
-            <a href="/">ABOUT</a>
+            <a href="/Blog-App/">ABOUT</a>
           </li>
           <li className="topListItem">
-            <a href="/">CONTACT</a>
+            <a href="/Blog-App/">CONTACT</a>
           </li>
           <li className="topListItem">
-            <a href="/write">WRITE</a>
+            <a href="/Blog-App/write">WRITE</a>
           </li>
           <li className="topListItem">
-            <a href="/">{user && "LOGOUT"}</a>
+            <a href="/Blog-App/">{user && "LOGOUT"}</a>
           </li>
         </ul>
       </div>
@@ -40,10 +40,10 @@ const topbar = () => {
           <>
             <ul className="topList">
               <li className="topListItem">
-                <a href="/login">LOGIN</a>
+                <a href="/Blog-App/login">LOGIN</a>
               </li>
               <li className="topListItem">
-                <a href="/register">REGISTER</a>
+                <a href="/Blog-App/register">REGISTER</a>
               </li>
             </ul>
           </>
