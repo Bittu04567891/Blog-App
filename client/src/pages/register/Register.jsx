@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "./register.css";
 
 const Register = () => {
@@ -28,7 +29,7 @@ const Register = () => {
         </button>
       </form>
       <button className="registerLoginButton">
-        <a href="/Blog-App/login">Login</a>
+        <Link to="/Blog-App/login">Login</Link>
       </button>
     </div>
   );
