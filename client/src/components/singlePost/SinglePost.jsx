@@ -1,24 +1,28 @@
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import "./singlePost.css";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 const SinglePost = () => {
   const location = useLocation();
   const path = location.pathname.split("/")[3];
+  const [post, setPost] = useState({});
 
   useEffect(() => {
-    const getPost = async () => {};
+    const getPost = async () => {
+      const res = await axios.get("/posts/" + path);
+      setPost(res.data);
+    };
+    getPost();
   }, [path]);
   return (
     <div className="singlePost">
       <div className="singlePostWrapper">
-        <img
-          src="https://i.pinimg.com/236x/1e/3f/58/1e3f587572a7a7b20bbf1828595a1786--holiday-party-themes-holiday-gift-guide.jpg"
-          alt=""
-          className="singlePostImg"
-        />
+        {post.photo && (
+          <img src={post.photo} alt="" className="singlePostImg" />
+        )}
         <h1 className="singlePostTitle">
-          Lorem ipsum dolor sit, amet consectetur
+          {post.title}
           <div className="singlePostEdit">
             <i className="singlePostIcon fa-regular fa-pen-to-square"></i>
             <i className="singlePostIcon fa-solid fa-trash"></i>
@@ -26,34 +30,16 @@ const SinglePost = () => {
         </h1>
         <div className="singlePostInfo">
           <span className="singlePostAuthor">
-            Author: <b>Bittu</b>
+            Author:
+            <Link to={`/Blog-App/?user=${post.username}`}>
+              <b>{post.username}</b>
+            </Link>
           </span>
-          <span className="singlePostDate">1 hour ago</span>
+          <span className="singlePostDate">
+            {new Date(post.createdAt).toDateString()}
+          </span>
         </div>
-        <p className="singlePostDesc">
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laborum
-          exercitationem ducimus voluptate ex, perspiciatis voluptatibus earum
-          voluptates reiciendis neque, cupiditate, tenetur architecto nisi
-          obcaecati itaque ratione eos facere magni aliquam! Lorem, ipsum dolor
-          sit amet consectetur adipisicing elit. Vel, voluptatum dolor
-          voluptate, impedit ab cum iste quo quisquam minus nihil similique quis
-          nulla aliquam totam deleniti commodi fugit. Omnis, tenetur neque
-          blanditiis deserunt eligendi, facilis aut exercitationem voluptate
-          expedita enim, possimus facere minus repellendus dolore aperiam
-          commodi reiciendis inventore. Eveniet quisquam ea laudantium eligendi
-          nulla ipsa dignissimos aut in minus, ut vero laborum, doloribus,
-          pariatur dolorem? Tempora reprehenderit expedita iure reiciendis
-          necessitatibus cumque magnam quae possimus modi optio magni, ut velit
-          non rerum dignissimos exercitationem itaque, inventore repellat!
-          Delectus atque eveniet facere omnis quaerat enim ab nihil tempore?
-          Quam unde deleniti eaque quibusdam illum officiis corrupti, laborum
-          placeat, nostrum sed modi magnam totam possimus id iusto fugit
-          perspiciatis labore exercitationem voluptatibus aspernatur similique.
-          Delectus, ducimus. Distinctio fuga nostrum facere aperiam doloribus,
-          est adipisci nisi veritatis soluta modi mollitia ullam dignissimos
-          voluptatibus sint saepe sequi exercitationem libero magnam. Totam,
-          sunt obcaecati.
-        </p>
+        <p className="singlePostDesc">{post.desc}</p>
       </div>
     </div>
   );
