@@ -1,13 +1,16 @@
 import Home from "./pages/home/Home.jsx";
-import Topbar from "./components/topbar/topbar.jsx";
+
 import Login from "./pages/login/Login.jsx";
 import Register from "./pages/register/Register.jsx";
 import Settings from "./pages/settings/Settings.jsx";
 import Write from "./pages/write/Write.jsx";
 import { Single } from "./pages/single/Single.jsx";
 import { Routes, Route } from "react-router-dom";
+import { useContext } from "react";
+import { Context } from "./context/Context.js";
+import Topbar from "./components/top/Topbar.jsx";
 function App() {
-  const user = false;
+  const { user } = useContext(Context);
   return (
     <>
       <Topbar />

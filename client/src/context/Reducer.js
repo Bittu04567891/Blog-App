@@ -1,5 +1,5 @@
 const Reducer = (state, action) => {
-  switch (state) {
+  switch (action.type) {
     case "LOGIN_START":
       return {
         user: null,
@@ -13,6 +13,12 @@ const Reducer = (state, action) => {
         error: false,
       };
     case "LOGIN_FAILURE":
+      return {
+        user: null,
+        isFetching: false,
+        error: true,
+      };
+    case "LOGOUT":
       return {
         user: null,
         isFetching: false,
