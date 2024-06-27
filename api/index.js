@@ -8,6 +8,10 @@ const postRoute = require("./routes/posts");
 const catRoute = require("./routes/categories");
 const multer = require("multer");
 const path = require("path");
+app.get("/", (req, res) => {
+  app.use(express.static(path.resolve(__dirname, "client", "build")));
+  res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+});
 
 dotenv.config();
 app.use(express.json());
