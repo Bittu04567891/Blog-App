@@ -1,12 +1,13 @@
 const router = require("express").Router();
 const User = require("../models/User");
-const bcrypt = require("bcrypt");
+// const bcrypt = require("bcrypt");
 
 //REGISTER
 router.post("/register", async (req, res) => {
   try {
-    const salt = await bcrypt.genSalt(10);
-    const hashedPass = await bcrypt.hash(req.body.password, salt);
+    // const salt = await bcrypt.genSalt(10);
+    // const hashedPass = await bcrypt.hash(req.body.password, salt);
+    const hashedPass = req.body.password;
     const newUser = new User({
       username: req.body.username,
       email: req.body.email,
