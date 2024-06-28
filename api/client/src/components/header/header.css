@@ -1,5 +1,6 @@
 .header{
     margin-top: 60px;
+    
 }
 .headerTitles{
     display: flex;
@@ -21,6 +22,10 @@
 .headerImg{
     width: 100%;
     height: 450px;
+   
+    /* max-width: 100%;
+    width:100%;
+    height:400px; */
     margin-top: 80px;
     object-fit: cover;
 }

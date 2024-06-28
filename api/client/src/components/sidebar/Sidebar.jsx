@@ -16,15 +16,16 @@ const Sidebar = () => {
   return (
     <div className="sidebar">
       <div className="sidebarItem">
-        <span className="sidebarTitle">ABOUT ME</span>
+        <span className="sidebarTitle">WELCOME</span>
         <img
           src="https://i.pinimg.com/236x/1e/3f/58/1e3f587572a7a7b20bbf1828595a1786--holiday-party-themes-holiday-gift-guide.jpg"
           alt=""
         />
-        Welcome to our blog app! Discover insightful articles, share your
-        thoughts, and connect with our community. Whether you're here to read,
-        write, or explore, our platform offers a space for everyone. Join us and
-        start your blogging journey today!
+        Welcome to the NIT Jamshedpur Placement and Internship Blog! This
+        platform is dedicated to sharing experiences, insights, and tips for
+        securing placements and internships. Let's inspire and support each
+        other on this journey to success. Join us, contribute, and let's achieve
+        our goals together!
       </div>
       <div className="sidebarItem">
         <span className="sidebarTitle">CATEGORIES</span>
