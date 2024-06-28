@@ -11,13 +11,19 @@ router.put("/:id", async (req, res) => {
     //   req.body.password = await bcrypt.hash(req.body.password, salt);
     // }
     try {
-      const updatedUser = await User.findByIdAndUpdate(
-        req.params.id,
-        {
-          $set: req.body,
-        },
-        { new: true }
-      );
+      const user = await User.findById(req.params.id);
+      if (!user) {
+        return res.status(404).json("User not found");
+      }
+
+      const { username, email, password, profilePic } = req.body;
+
+      if (username) user.username = username;
+      if (email) user.email = email;
+      if (password) user.password = password;
+      if (profilePic) user.profilePic = profilePic;
+
+      const updatedUser = await user.save();
       res.status(200).json(updatedUser);
     } catch (err) {
       res.status(500).json(err);

@@ -11,7 +11,7 @@ const Setting = () => {
   const [file, setFile] = useState(null);
   const [username, setUsername] = useState(user.username);
   const [email, setEmail] = useState(user.email);
-  const [password, setPassword] = useState(user.password);
+  const [password, setPassword] = useState("");
   const [success, setSuccess] = useState(false);
 
   const handleSubmit = async (e) => {
@@ -20,9 +20,9 @@ const Setting = () => {
 
     const updatedUser = {
       userId: user._id,
-      username,
-      email,
-      password,
+      username: username || user.username,
+      email: email || user.email,
+      password: password || user.password,
     };
 
     if (file) {
@@ -33,14 +33,17 @@ const Setting = () => {
       updatedUser.profilePic = filename;
 
       try {
-        await axios.post("/api/upload", data);
+        await axios.post(`${window.location.origin}/api/upload`, data);
       } catch (err) {
         console.error("Error uploading file:", err);
       }
     }
 
     try {
-      const res = await axios.put(`/api/users/${user._id}`, updatedUser);
+      const res = await axios.put(
+        `${window.location.origin}/api/users/${user._id}`,
+        updatedUser
+      );
       setSuccess(true);
       dispatch({ type: "UPDATE_SUCCESS", payload: res.data });
     } catch (err) {
