@@ -9,9 +9,9 @@ const Setting = () => {
 
   const { user, dispatch } = useContext(Context);
   const [file, setFile] = useState(null);
-  const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [username, setUsername] = useState(user.username);
+  const [email, setEmail] = useState(user.email);
+  const [password, setPassword] = useState(user.password);
   const [success, setSuccess] = useState(false);
   const handleSubmit = async (e) => {
     e.preventDefault();
