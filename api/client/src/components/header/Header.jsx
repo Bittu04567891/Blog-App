@@ -1,4 +1,3 @@
-import { posix } from "path";
 import "./header.css";
 
 const Header = () => {
