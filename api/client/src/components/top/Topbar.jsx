@@ -5,11 +5,11 @@ import { Context } from "../../context/Context";
 
 const Topbar = () => {
   const { user, dispatch } = useContext(Context);
-  const PF = `${window.location.origin}/api/images/`;
+
   const handleLogout = () => {
     dispatch({ type: "LOGOUT" });
   };
-  console.log("Profile picture URL: ", PF + user?.profilePic);
+
   return (
     <div className="top">
       <div className="topLeft">
@@ -27,7 +27,7 @@ const Topbar = () => {
             <Link to="/about">ABOUT</Link>
           </li>
           <li className="topListItem">
-            <Link to="/">CONTACT</Link>
+            <Link to="/contact">CONTACT</Link>
           </li>
           <li className="topListItem">
             <Link to="/write">WRITE</Link>
@@ -40,7 +40,7 @@ const Topbar = () => {
       <div className="topRight">
         {user ? (
           <Link to="/settings">
-            <img className="topImg" src={PF + user.profilePic} alt="" />
+            <img className="topImg" src={user.profilePic} alt="" />
           </Link>
         ) : (
           <>

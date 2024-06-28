@@ -3,12 +3,13 @@ import Sidebar from "../../components/sidebar/Sidebar";
 import { useContext, useState } from "react";
 import { Context } from "../../context/Context";
 import axios from "axios";
+import upload from "../../lib/upload";
 
 const Setting = () => {
-  const PF = `${window.location.origin}/api/images/`;
   const { user, dispatch } = useContext(Context);
 
   const [file, setFile] = useState(null);
+
   const [username, setUsername] = useState(user.username);
   const [email, setEmail] = useState(user.email);
   const [password, setPassword] = useState("");
@@ -26,14 +27,9 @@ const Setting = () => {
     };
 
     if (file) {
-      const data = new FormData();
-      const filename = Date.now() + file.name;
-      data.append("name", filename);
-      data.append("file", file);
-      updatedUser.profilePic = filename;
-
       try {
-        await axios.post(`${window.location.origin}/api/upload`, data);
+        const profilePicURL = await upload(file);
+        updatedUser.profilePic = profilePicURL; // Use the direct URL from Firebase Storage
       } catch (err) {
         console.error("Error uploading file:", err);
       }
@@ -62,10 +58,7 @@ const Setting = () => {
         <form className="settingsForm" onSubmit={handleSubmit}>
           <label>Profile Picture</label>
           <div className="settingsPP">
-            <img
-              src={file ? URL.createObjectURL(file) : PF + user.profilePic}
-              alt=""
-            />
+            <img src={file ? user.profilePic : ""} alt="" />
             <label htmlFor="fileInput">
               <i className="settingsPPIcon fa-regular fa-user"></i>
             </label>

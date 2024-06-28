@@ -10,6 +10,7 @@ import { useContext } from "react";
 import { Context } from "./context/Context.js";
 import Topbar from "./components/top/Topbar.jsx";
 import About from "./pages/about/About.jsx";
+import Contact from "./pages/contact/Contact.jsx";
 function App() {
   const { user } = useContext(Context);
   return (
@@ -32,6 +33,7 @@ function App() {
           element={user ? <Settings /> : <Navigate to="/register" />}
         />
         <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
         <Route path="/api/posts/:postId" element={<Single />} />
       </Routes>
     </>
