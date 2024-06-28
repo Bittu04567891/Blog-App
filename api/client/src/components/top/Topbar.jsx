@@ -9,6 +9,7 @@ const Topbar = () => {
   const handleLogout = () => {
     dispatch({ type: "LOGOUT" });
   };
+  console.log("Profile picture URL: ", PF + user?.profilePic);
   return (
     <div className="top">
       <div className="topLeft">
