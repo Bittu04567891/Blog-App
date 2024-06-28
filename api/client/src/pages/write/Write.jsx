@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./write.css";
 import axios from "axios";
@@ -8,8 +8,22 @@ const Write = () => {
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
   const [file, setFile] = useState(null);
+  const [categories, setCategories] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState("");
   const { user } = useContext(Context);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        const res = await axios.get(`${window.location.origin}/api/categories`);
+        setCategories(res.data);
+      } catch (err) {
+        console.error(err);
+      }
+    };
+    fetchCategories();
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -17,6 +31,7 @@ const Write = () => {
       username: user.username,
       title,
       desc,
+      category: selectedCategory,
     };
     if (file) {
       const data = new FormData();
@@ -73,6 +88,22 @@ const Write = () => {
             className="writeInput writeText"
             onChange={(e) => setDesc(e.target.value)}
           />
+        </div>
+        <div className="writeFormGroup">
+          <select
+            className="writeInput"
+            value={selectedCategory}
+            onChange={(e) => setSelectedCategory(e.target.value)}
+          >
+            <option value="" disabled>
+              Select a category
+            </option>
+            {categories.map((cat) => (
+              <option key={cat._id} value={cat.name}>
+                {cat.name}
+              </option>
+            ))}
+          </select>
         </div>
         <button className="writeSubmit" type="submit">
           Publish
