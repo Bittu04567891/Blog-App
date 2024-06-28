@@ -21,8 +21,10 @@ const Sidebar = () => {
           src="https://i.pinimg.com/236x/1e/3f/58/1e3f587572a7a7b20bbf1828595a1786--holiday-party-themes-holiday-gift-guide.jpg"
           alt=""
         />
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem
-        magnam architecto, tempora cum commodi excepturi vitae.
+        Welcome to our blog app! Discover insightful articles, share your
+        thoughts, and connect with our community. Whether you're here to read,
+        write, or explore, our platform offers a space for everyone. Join us and
+        start your blogging journey today!
       </div>
       <div className="sidebarItem">
         <span className="sidebarTitle">CATEGORIES</span>
