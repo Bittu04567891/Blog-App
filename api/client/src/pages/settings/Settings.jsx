@@ -5,7 +5,7 @@ import { Context } from "../../context/Context";
 import axios from "axios";
 
 const Setting = () => {
-  const PF = "http://localhost:5000/images/";
+  const PF = `${window.location.origin}/api/images/`;
   const { user, dispatch } = useContext(Context);
 
   const [file, setFile] = useState(null);
