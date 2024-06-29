@@ -6,15 +6,14 @@ const Contact = () => {
     <div className="contact">
       <h1 className="contactTitle">Contact Us</h1>
       <div className="founderSection">
-        <img src="./bittu.jpg" alt="Founder" className="founderPhoto" />
+        <img src="https://i.ibb.co/89gXt6D/IMG20240204120723.jpg" alt="Founder" className="founderPhoto" />
         <div className="founderDetails">
           <h2 className="founderName">Bittu Kumar Thakur</h2>
           <p className="founderBio">
-            Bittu Kumar Thakur, a visionary founder of our placement and
-            internship blog, is committed to bridging the gap between students
-            and their dream careers. Bittu has a deep understanding of what it
-            takes to succeed.
-          </p>
+           Bittu Kumar Thakur, a 4th-year student at NIT Jamshedpur, founded our placement and internship blog with a commitment to bridging the gap between students and their dream careers. With first hand experience of the challenges and opportunities in the academic and professional world, Bittu is dedicated to connecting students with the resources and support they need to succeed.
+
+
+       </p>
         </div>
       </div>
       <div className="goalsSection">
